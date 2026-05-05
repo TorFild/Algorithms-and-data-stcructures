@@ -5,7 +5,6 @@
 
 using namespace std;
 
-// Функція шейкер-впорядкування з виведенням проміжних кроків
 void shakerSortSteps(int a[], long size)
 {
     long j, k = size - 1;
@@ -15,7 +14,6 @@ void shakerSortSteps(int a[], long size)
 
     do
     {
-        // Прохід знизу вгору (спливає найменша "бульбашка")
         for (j = ub; j > 0; j--)
         {
             if (a[j - 1] > a[j])
@@ -33,7 +31,6 @@ void shakerSortSteps(int a[], long size)
             cout << a[i] << "\t";
         cout << endl;
 
-        // Прохід згори вниз (опускається найбільша "бульбашка")
         for (j = 1; j <= ub; j++)
         {
             if (a[j - 1] > a[j])
@@ -68,7 +65,6 @@ int main()
     cout << "Вихідний масив:\t\t";
     for (int i = 0; i < 10; i++)
     {
-        // Генеруємо числа в діапазоні від 20 до 120 (N=6)
         arr[i] = rand() % (120 - 20 + 1) + 20;
         cout << arr[i] << "\t";
     }

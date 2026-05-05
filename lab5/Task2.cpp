@@ -5,7 +5,6 @@
 
 using namespace std;
 
-// 1. Сортування вибором
 void selectSort(int a[], long size)
 {
     for (long i = 0; i < size - 1; i++)
@@ -25,7 +24,6 @@ void selectSort(int a[], long size)
     }
 }
 
-// 2. Сортування бульбашкою
 void bubbleSort(int a[], long size)
 {
     for (long i = 0; i < size - 1; i++)
@@ -42,7 +40,6 @@ void bubbleSort(int a[], long size)
     }
 }
 
-// 3. Шейкер-сортування
 void shakerSort(int a[], long size)
 {
     long j, k = size - 1;
@@ -75,7 +72,6 @@ void shakerSort(int a[], long size)
     } while (lb < ub);
 }
 
-// 4. Сортування вставками
 void insertSort(int a[], long size)
 {
     for (long i = 1; i < size; i++)
@@ -91,7 +87,6 @@ void insertSort(int a[], long size)
     }
 }
 
-// Допоміжна функція для заповнення масиву
 void fillArray(int a[], long size)
 {
     for (long i = 0; i < size; i++)
@@ -106,7 +101,6 @@ int main()
     SetConsoleOutputCP(65001);
     srand(time(NULL));
 
-    // Розміри для варіанту 6 (100*6, 1000*6, 10000*6)
     long sizes[] = {600, 6000, 60000};
 
     for (int s = 0; s < 3; s++)
@@ -115,28 +109,24 @@ int main()
         int *arr = new int[currentSize];
         cout << "\n=== Тестування для " << currentSize << " елементів ===\n";
 
-        // Вибір
         fillArray(arr, currentSize);
         unsigned int start = clock();
         selectSort(arr, currentSize);
         unsigned int end = clock();
         cout << "Вибір:\t\t" << end - start << " мс\n";
 
-        // Бульбашка
         fillArray(arr, currentSize);
         start = clock();
         bubbleSort(arr, currentSize);
         end = clock();
         cout << "Бульбашка:\t" << end - start << " мс\n";
 
-        // Шейкер
         fillArray(arr, currentSize);
         start = clock();
         shakerSort(arr, currentSize);
         end = clock();
         cout << "Шейкер:\t\t" << end - start << " мс\n";
 
-        // Вставка
         fillArray(arr, currentSize);
         start = clock();
         insertSort(arr, currentSize);

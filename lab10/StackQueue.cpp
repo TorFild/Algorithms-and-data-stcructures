@@ -5,7 +5,6 @@
 
 using namespace std;
 
-// Структура даних учасника олімпіади (Варіант 6)
 struct Participant
 {
     string passportSeries;
@@ -22,8 +21,6 @@ struct Participant
     }
 };
 
-// ================= СТЕК (Stack - LIFO) =================
-// Вузол для стеку
 struct StackNode
 {
     Participant data;
@@ -33,11 +30,10 @@ struct StackNode
 class Stack
 {
 private:
-    StackNode *topNode; // Вказівник на вершину стеку
+    StackNode *topNode; 
 public:
     Stack() { topNode = nullptr; }
 
-    // Додавання елемента у вершину стеку
     void push(Participant p)
     {
         StackNode *newNode = new StackNode;
@@ -47,7 +43,6 @@ public:
         cout << "У стек додано: " << p.surname << endl;
     }
 
-    // Видалення елемента з вершини стеку
     void pop()
     {
         if (topNode == nullptr)
@@ -61,7 +56,6 @@ public:
         delete temp;
     }
 
-    // Виведення вмісту стеку
     void print() const
     {
         if (topNode == nullptr)
@@ -82,8 +76,6 @@ public:
     }
 };
 
-// ================= ЧЕРГА (Queue - FIFO) =================
-// Вузол для черги
 struct QueueNode
 {
     Participant data;
@@ -93,8 +85,8 @@ struct QueueNode
 class Queue
 {
 private:
-    QueueNode *head; // Вказівник на початок черги (звідси видаляємо)
-    QueueNode *tail; // Вказівник на кінець черги (сюди додаємо)
+    QueueNode *head; 
+    QueueNode *tail; 
 public:
     Queue()
     {
@@ -102,7 +94,6 @@ public:
         tail = nullptr;
     }
 
-    // Додавання елемента в кінець черги
     void enqueue(Participant p)
     {
         QueueNode *newNode = new QueueNode;
@@ -110,7 +101,7 @@ public:
         newNode->next = nullptr;
 
         if (head == nullptr)
-        { // Якщо черга порожня
+        { 
             head = tail = newNode;
         }
         else
@@ -121,7 +112,6 @@ public:
         cout << "У чергу додано: " << p.surname << endl;
     }
 
-    // Видалення елемента з початку черги
     void dequeue()
     {
         if (head == nullptr)
@@ -134,13 +124,12 @@ public:
         head = head->next;
 
         if (head == nullptr)
-        { // Якщо після видалення черга стала порожньою
+        { 
             tail = nullptr;
         }
         delete temp;
     }
 
-    // Виведення вмісту черги
     void print() const
     {
         if (head == nullptr)
@@ -174,7 +163,7 @@ int main()
 
     myStack.print();
 
-    myStack.pop(); // Має видалити Іваненка (останній доданий)
+    myStack.pop(); 
     myStack.print();
 
     cout << "========== ТЕСТУВАННЯ ЧЕРГИ (FIFO) ==========" << endl;
@@ -185,7 +174,7 @@ int main()
 
     myQueue.print();
 
-    myQueue.dequeue(); // Має видалити Коваленка (перший доданий)
+    myQueue.dequeue(); 
     myQueue.print();
 
     return 0;
